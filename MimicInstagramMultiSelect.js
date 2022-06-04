@@ -36,9 +36,8 @@ const MimicInstagramMultiSelect = () => {
   const [search, setSearch] = useState('');
 
   const searchPronoun = (text) => {
-    const regex = /^[^!-\/:-@\[-`{-~]+$/;
     setFilter(pronouns);
-    if(regex.test(text)) {
+    if(text) {
       const newData = filter.filter((item) => {
         const itemData = item.pronoun ? item.pronoun.toLowerCase() : ''.toLocaleLowerCase()
         const textData = text.toLocaleLowerCase().trim();
@@ -46,7 +45,7 @@ const MimicInstagramMultiSelect = () => {
       });
       setPronoun(newData);
       setSearch(text.trim());
-    } if(regex.test(text)) {
+    } if(text) {
       const items = selected.filter((item) => item.pronoun !== text);
       setSelected(items);
       setSearch(text.trim());
